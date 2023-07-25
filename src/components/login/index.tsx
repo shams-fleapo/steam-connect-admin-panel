@@ -1,7 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../button';
 import { CustomInput } from '../custom-input';
 
 export default function Login() {
+	const navigate = useNavigate();
 	return (
 		<div className='flex justify-center items-center'>
 			<div className='flex h-full bg-grey p-5 lg:p-[50px] lg:w-[624px]  xs:min-h-[500px] sm:mt-[40px] md:mt-[40px] xs:mt-[40px] mt-2100px] border-2 rounded'>
@@ -9,12 +11,7 @@ export default function Login() {
 					<div className='mb-2.5 text-left'>Sign In</div>
 					<CustomInput.Email showLabel={true} placeholder='your.email@example.com' label='Email Address' />
 					<CustomInput.Password showLabel={true} placeholder='Enter your password' showIcon={true} />
-					<Button
-						onClick={() => {
-							console.log('clicked');
-						}}
-						variant='blue'
-					>
+					<Button onClick={() => navigate('/dashboard')} variant='blue'>
 						Sign In
 					</Button>
 
