@@ -10,13 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "antd": "^5.7.2",
     "axios": "^1.4.0",
     "clsx": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.2",
     "react-icons": "^4.10.1",
-    "react-input-mask": "^2.0.4"
+    "react-input-mask": "^2.0.4",
+    "react-responsive": "^9.0.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
