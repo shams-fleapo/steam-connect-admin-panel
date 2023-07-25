@@ -7,42 +7,175 @@ import { EllipsisOutlined } from '@ant-design/icons';
 const { Column, ColumnGroup } = Table;
 
 interface DataType {
-	key: React.Key;
-	firstName: string;
-	lastName: string;
-	age: number;
-	address: string;
-	tags: string[];
-	date: string;
+	// key: React.Key;
+	user: string;
+	email: string;
+	tarif: string;
+	administrator: string;
+	block_login: string;
+	date_created: string;
+	next_date_update_payment: string;
 }
+
+const columns = [
+	{
+		title: 'User',
+		dataIndex: 'user',
+		width: 150,
+		render: (text, record) => (
+			<div>
+				<div>{record.user}</div>
+				<div className='text-[12px] text-gray-500'>{record.email}</div>
+			</div>
+		),
+	},
+	{
+		title: 'Tarif',
+		dataIndex: 'tarif',
+		width: 150,
+	},
+	{
+		title: 'Administrator',
+		dataIndex: 'administrator',
+		width: 150,
+	},
+	{
+		title: 'Block login',
+		dataIndex: 'block_login',
+		width: 150,
+	},
+	{
+		title: 'Date Created',
+		dataIndex: 'date_created',
+		width: 150,
+	},
+	{
+		title: 'Next date update payment',
+		dataIndex: 'next_date_update_payment',
+		width: 150,
+	},
+	{
+		title: 'Action',
+		dataIndex: 'action',
+		width: 150,
+		render: (_, record) => (
+			<Popover placement='bottom' title='Title' content='Content' trigger='click' overlayClassName='custom-popover'>
+				<div className='center-icon'>
+					<EllipsisOutlined style={{ fontSize: '30px' }} />
+				</div>
+			</Popover>
+		),
+	},
+];
 
 const data: DataType[] = [
 	{
-		key: '1',
-		firstName: 'John',
-		lastName: 'Brown',
-		age: 32,
-		address: 'New York No. 1 Lake Park',
-		tags: ['nice', 'developer'],
-		date: '2023-07-25T07:06:53.188Z',
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
 	},
 	{
-		key: '2',
-		firstName: 'Jim',
-		lastName: 'Green',
-		age: 42,
-		address: 'London No. 1 Lake Park',
-		tags: ['loser'],
-		date: '2023-07-25T07:06:53.188Z',
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
 	},
 	{
-		key: '3',
-		firstName: 'Joe',
-		lastName: 'Black',
-		age: 32,
-		address: 'Sydney No. 1 Lake Park',
-		tags: ['cool', 'teacher'],
-		date: '2023-07-25T07:06:53.188Z',
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
+	},
+	{
+		user: 'Audry Kibonge',
+		tarif: 'free',
+		administrator: 'User',
+		block_login: 'blocked',
+		date_created: '2023-07-23 03:53:22',
+		next_date_update_payment: '2024-07-23 00:00:00',
+		email: 'aundry@stymnnect.com',
 	},
 ];
 
@@ -58,25 +191,7 @@ const content = (
 export const Dashboard = () => {
 	return (
 		<ProfileLayout header={<Header />}>
-			<Table dataSource={data} scroll={{ x: 1000, y: 500 }}>
-				<Column title='User' dataIndex='firstName' key='firstName' />
-				<Column title='Tarif' dataIndex='lastName' key='lastName' />
-				<Column title='Administrator' dataIndex='age' key='age' />
-				<Column title='Block login' dataIndex='address' key='address' />
-				<Column title='date created' dataIndex='date' key='date' />
-				<Column title='next date update payment' dataIndex='address' key='address' />
-				<Column
-					title='Action'
-					key='action'
-					render={(_: any, record: DataType) => (
-						<Popover placement='bottom' title={text} content={content} trigger='click' overlayClassName='custom-popover'>
-							<div className='center-icon'>
-								<EllipsisOutlined style={{ fontSize: '30px' }} />
-							</div>
-						</Popover>
-					)}
-				/>
-			</Table>
+			<Table dataSource={data} scroll={{ x: 1000, y: 500 }} columns={columns} />
 		</ProfileLayout>
 	);
 };
