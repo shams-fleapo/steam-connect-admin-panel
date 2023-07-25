@@ -56,11 +56,6 @@ export const Input = ({
 	isError,
 	...inputProps
 }: InputProps) => {
-	// const {
-	// 	formState: { errors, isSubmitted },
-	// 	register,
-	// } = useFormContext();
-
 	const label = customLabel || name;
 	const formatValidations = { ...validations };
 
@@ -105,7 +100,6 @@ export const Input = ({
 		),
 		type: name == 'password' ? 'password' : 'text',
 		placeholder: placeholder,
-		// ...register(name, formatValidations),
 		...inputProps,
 	};
 
@@ -138,7 +132,7 @@ export const Input = ({
 				<div
 					className={clsx('absolute -translate-y-1/2 top-1/2 bottom-1 ml-2', {
 						'text-error-500': hasError,
-						'text-primary': !hasError,
+						'text-blue-ribbon-300': !hasError,
 					})}
 				>
 					{icon}

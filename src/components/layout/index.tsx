@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import { useMediaQuery } from 'react-responsive';
@@ -14,64 +14,126 @@ const ProfileLayout = ({ children, header }: { children?: ReactNode; header?: JS
 	} = theme.useToken();
 
 	return (
-		<Layout>
-			<Sider
-				trigger={null}
-				collapsible
-				collapsed={!isDesktop ? true : collapsed}
-				breakpoint={'lg'}
-				style={{
-					overflow: 'auto',
-					height: '100vh',
-					// position: 'fixed',
-					left: 0,
-					top: 0,
-					bottom: 0,
-				}}
-			>
-				<div className='demo-logo-vertical' />
-				<Button
-					type='text'
-					icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-					onClick={() => setCollapsed(!collapsed)}
+		<Layout style={{ minHeight: '100vh' }}>
+			{!isDesktop && (
+				<Sider
+					trigger={null}
+					collapsible
+					collapsed={collapsed}
+					breakpoint={'xs'}
 					style={{
-						fontSize: '16px',
-						width: 64,
-						height: 64,
-						color: 'white',
-						marginBottom: '10px',
+						overflow: 'auto',
+						height: '100vh',
+						// position: 'fixed',
+						left: 0,
+						top: 0,
+						bottom: 0,
+						position: 'absolute',
+						zIndex: 9999,
 					}}
-				/>
-				<div
+				>
+					<div className='demo-logo-vertical' />
+					<Button
+						type='text'
+						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+						onClick={() => setCollapsed(!collapsed)}
+						style={{
+							fontSize: '16px',
+							width: 64,
+							height: 64,
+							color: 'white',
+							marginBottom: '10px',
+						}}
+					/>
+					<div
+						style={{
+							borderBlock: '0.1px solid grey',
+							margin: '1px 0 10px',
+						}}
+					/>
+					<Menu
+						theme='dark'
+						mode='inline'
+						defaultSelectedKeys={['1']}
+						items={[
+							{
+								key: '1',
+								icon: <UserOutlined />,
+								label: 'nav 1',
+							},
+							{
+								key: '2',
+								icon: <VideoCameraOutlined />,
+								label: 'nav 2',
+							},
+							{
+								key: '3',
+								icon: <UploadOutlined />,
+								label: 'nav 3',
+							},
+						]}
+					/>
+				</Sider>
+			)}
+			{isDesktop && (
+				<Sider
+					trigger={null}
+					collapsible
+					collapsed={collapsed}
+					breakpoint={'lg'}
 					style={{
-						borderBlock: '0.1px solid grey',
-						margin: '1px 0 10px',
+						overflow: 'auto',
+						height: '100vh',
+						// position: 'fixed',
+						left: 0,
+						top: 0,
+						bottom: 0,
 					}}
-				/>
-				<Menu
-					theme='dark'
-					mode='inline'
-					defaultSelectedKeys={['1']}
-					items={[
-						{
-							key: '1',
-							icon: <UserOutlined />,
-							label: 'nav 1',
-						},
-						{
-							key: '2',
-							icon: <VideoCameraOutlined />,
-							label: 'nav 2',
-						},
-						{
-							key: '3',
-							icon: <UploadOutlined />,
-							label: 'nav 3',
-						},
-					]}
-				/>
-			</Sider>
-			<Layout style={{ zIndex: isDesktop ? '50' : '0' }}>
+				>
+					<div className='demo-logo-vertical' />
+					<Button
+						type='text'
+						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+						onClick={() => setCollapsed(!collapsed)}
+						style={{
+							fontSize: '16px',
+							width: 64,
+							height: 64,
+							color: 'white',
+							marginBottom: '10px',
+						}}
+					/>
+					<div
+						style={{
+							borderBlock: '0.1px solid grey',
+							margin: '1px 0 10px',
+						}}
+					/>
+					<Menu
+						theme='dark'
+						mode='inline'
+						defaultSelectedKeys={['1']}
+						items={[
+							{
+								key: '1',
+								icon: <UserOutlined />,
+								label: 'nav 1',
+							},
+							{
+								key: '2',
+								icon: <VideoCameraOutlined />,
+								label: 'nav 2',
+							},
+							{
+								key: '3',
+								icon: <UploadOutlined />,
+								label: 'nav 3',
+							},
+						]}
+					/>
+				</Sider>
+			)}
+			<Layout style={{ zIndex: isDesktop ? 50 : 0 }}>
 				<div
 					style={{
 						background: colorBgContainer,
@@ -83,10 +145,11 @@ const ProfileLayout = ({ children, header }: { children?: ReactNode; header?: JS
 				</div>
 				<Content
 					style={{
-						margin: '24px 16px',
-						padding: 24,
+						margin: '24px 8px',
+						padding: 14,
 						minHeight: 280,
 						background: colorBgContainer,
+						marginLeft: !isDesktop && '80px',
 					}}
 				>
 					{children}

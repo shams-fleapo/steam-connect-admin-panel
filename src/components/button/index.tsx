@@ -19,7 +19,7 @@ export const Button = ({ children, className, variant = 'primary', href, ...prop
 		{
 			'!bg-gray-800 hover:!bg-gray-900': variant === 'black',
 			'text-primary hover:underline flex items-center justify-center': variant === 'text-primary',
-			'py-2 min-h-[48px] bg-primary text-sm rounded hover:bg-primary-600 transition-colors px-4 uppercase font-bold':
+			'py-2 min-h-[48px] bg-blue-ribbon-300 text-sm rounded hover:bg-blue-ribbon-500 transition-colors px-4 uppercase font-bold':
 				!variant || !variant.includes('text'),
 			'text-white': variant === 'primary' || variant === 'black' || variant === 'red',
 			'border border-[#9F98BE] hover:!bg-[#fcfcfc] !bg-white !text-[#1C1A27] transition-colors dark:border-black-dark dark:hover:bg-black-dark':
