@@ -3,15 +3,10 @@ import { AiFillEye as OpenEyeIcon, AiFillEyeInvisible as CloseEyeIcon } from 're
 import { TbPassword as PasswordIcon } from 'react-icons/tb';
 import { CustomInput, Input } from '../input';
 import clsx from 'clsx';
-// import { useFormContext } from 'react-hook-form';
 
 export const validPassword = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,24}$/;
 export const Password = (props: CustomInput) => {
-	// const { watch, formState } = useFormContext();
 	const [showPwd, setShowPwd] = useState<boolean>(true);
-	// const inputValue = watch('password');
-	// const repwdinputValue = watch('re-password');
-	// const errors = Boolean(formState.errors?.password);
 
 	if (props.PwdValidation && props.name == 'password') {
 		const isContainsUppercase = /^(?=.*[A-Z])/;
@@ -46,7 +41,7 @@ export const Password = (props: CustomInput) => {
 			name='password'
 			type={showPwd ? 'password' : 'text'}
 			icon={
-				props.showIcon ? (
+				props.showicon ? (
 					<PasswordIcon
 						// placeholder='your.email@example.com'
 						width={16}

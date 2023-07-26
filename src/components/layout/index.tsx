@@ -6,9 +6,23 @@ import clsx from 'clsx';
 
 const { Header, Sider, Content } = Layout;
 
-const ProfileLayout = ({ children, header }: { children?: ReactNode; header?: JSX.Element }) => {
+const ProfileLayout = ({
+	children,
+	header,
+	selectedMenuKey,
+	setSelectedMenuKey,
+}: {
+	children?: ReactNode;
+	header?: JSX.Element;
+	selectedMenuKey: string;
+	setSelectedMenuKey: Function;
+}) => {
 	const isDesktop = useMediaQuery({ minWidth: 1024 });
 	const [collapsed, setCollapsed] = useState(false);
+
+	const handleMenuClick = (menuKey) => {
+		setSelectedMenuKey(menuKey);
+	};
 	const {
 		token: { colorBgContainer },
 	} = theme.useToken();
@@ -59,19 +73,20 @@ const ProfileLayout = ({ children, header }: { children?: ReactNode; header?: JS
 							{
 								key: '1',
 								icon: <UserOutlined />,
-								label: 'nav 1',
+								label: 'Users',
 							},
 							{
 								key: '2',
 								icon: <VideoCameraOutlined />,
-								label: 'nav 2',
+								label: 'Payments',
 							},
 							{
 								key: '3',
 								icon: <UploadOutlined />,
-								label: 'nav 3',
+								label: 'Subscriptions',
 							},
 						]}
+						onClick={(e) => handleMenuClick(e.key)}
 					/>
 				</Sider>
 			)}
@@ -117,19 +132,20 @@ const ProfileLayout = ({ children, header }: { children?: ReactNode; header?: JS
 							{
 								key: '1',
 								icon: <UserOutlined />,
-								label: 'nav 1',
+								label: 'Users',
 							},
 							{
 								key: '2',
 								icon: <VideoCameraOutlined />,
-								label: 'nav 2',
+								label: 'Payments',
 							},
 							{
 								key: '3',
 								icon: <UploadOutlined />,
-								label: 'nav 3',
+								label: 'Subscriptions',
 							},
 						]}
+						onClick={(e) => handleMenuClick(e.key)}
 					/>
 				</Sider>
 			)}
