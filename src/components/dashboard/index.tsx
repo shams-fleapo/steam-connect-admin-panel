@@ -1,28 +1,21 @@
 import React, { useState } from 'react';
 import ProfileLayout from '../layout';
 import { Header } from '../layout/header';
-import { Space, Table, Tag, Dropdown, MenuProps, Popover } from 'antd';
+import { Space, Table, Tag, Dropdown, MenuProps, Popover, ConfigProvider, theme } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
-
+import { UserData, paymentData, subscriptionData } from './data';
 const { Column, ColumnGroup } = Table;
 
-interface DataType {
-	key: React.Key;
-	user: string;
-	email: string;
-	tarif: string;
-	administrator: string;
-	block_login: string;
-	date_created: string;
-	next_date_update_payment: string;
-	paymentId: string;
-	paymentDate: string;
-	amount: number;
-	paymentStatus: string;
-}
+const title = <span>Title</span>;
 
-const columns = [
+const content = (
+	<div>
+		<p>Content</p>
+		<p>Content</p>
+	</div>
+);
+const userColumns = [
 	{
 		title: 'User',
 		dataIndex: 'user',
@@ -33,11 +26,6 @@ const columns = [
 				<div className='text-[12px] text-gray-500'>{record.email}</div>
 			</div>
 		),
-	},
-	{
-		title: 'Tarif',
-		dataIndex: 'tarif',
-		width: 150,
 	},
 	{
 		title: 'Administrator',
@@ -64,7 +52,7 @@ const columns = [
 		dataIndex: 'action',
 		width: 150,
 		render: (_, record) => (
-			<Popover placement='bottom' title='Title' content='Content' trigger='click' overlayClassName='custom-popover'>
+			<Popover placement='bottom' title={title} content={content} trigger='click' overlayClassName='custom-popover'>
 				<div className='center-icon'>
 					<EllipsisOutlined style={{ fontSize: '30px' }} />
 				</div>
@@ -73,7 +61,7 @@ const columns = [
 	},
 ];
 
-const columns2 = [
+const paymentsColumns = [
 	{
 		title: 'Payment Id',
 		dataIndex: 'paymentId',
@@ -101,225 +89,86 @@ const columns2 = [
 	},
 ];
 
-const column3 = [
+const subscriptionColumns = [
 	{
-		title: 'Subscription',
-		dataIndex: 'paymentId',
+		title: 'Name',
+		dataIndex: 'name',
 		width: 150,
 	},
 	{
-		title: 'Action',
-		dataIndex: 'action',
+		title: 'Storage',
+		dataIndex: 'storage',
 		width: 150,
-		render: (_, record) => (
-			<Popover placement='bottom' title='Title' content='Content' trigger='click' overlayClassName='custom-popover'>
-				<EllipsisOutlined style={{ fontSize: '30px' }} />
-			</Popover>
-		),
+		render: (value) => (typeof value === 'string' ? value : `${value} TB`),
+	},
+	{
+		title: 'Max Person Count',
+		dataIndex: 'maxPersonCount',
+		width: 150,
+	},
+	{
+		title: 'Monthly Price',
+		dataIndex: 'monthlyPrice',
+		width: 150,
+		render: (value) => (typeof value === 'string' ? value : `$${value}`),
+	},
+	{
+		title: 'Annual Price',
+		dataIndex: 'annualPrice',
+		width: 150,
+		render: (value) => (typeof value === 'string' ? value : `$${value}`),
+	},
+	{
+		title: 'Status',
+		dataIndex: 'status',
+		width: 150,
+	},
+	{
+		title: 'Subsciber Count',
+		dataIndex: 'subsciberCount',
+		width: 150,
 	},
 ];
-
-const data: DataType[] = [
-	{
-		key: 1,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 2,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 3,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 4,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 5,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 6,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 7,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 8,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 9,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 10,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 11,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-	{
-		key: 12,
-		user: 'Audry Kibonge',
-		tarif: 'free',
-		administrator: 'User',
-		block_login: 'blocked',
-		date_created: '2023-07-23 03:53:22',
-		next_date_update_payment: '2024-07-23 00:00:00',
-		email: 'aundry@stymnnect.com',
-		paymentId: 't736e378wegh737889',
-		paymentDate: '2023-07-23 03:53:22',
-		amount: 63737,
-		paymentStatus: 'done',
-	},
-];
-
-const text = <span>Title</span>;
-
-const content = (
-	<div>
-		<p>Content</p>
-		<p>Content</p>
-	</div>
-);
 
 export const Dashboard = () => {
+	const { defaultAlgorithm, darkAlgorithm } = theme;
 	const [selectedMenuKey, setSelectedMenuKey] = useState('1');
+	const [isDarkMode, setIsDarkMode] = useState(false);
 	const isDesktop = useMediaQuery({ minWidth: 1024 });
-	const scrollY = !isDesktop ? 400 : 500;
+	const scrollY = !isDesktop ? 500 : 500;
 	const getMenuContent = () => {
 		switch (selectedMenuKey) {
 			case '1':
-				return <Table dataSource={data} scroll={{ x: 1000, y: scrollY }} columns={columns} />;
-
+				return <Table dataSource={UserData} scroll={{ x: 1000, y: scrollY }} columns={userColumns} />;
 			case '2':
-				return <Table dataSource={data} scroll={{ x: 1000, y: scrollY }} columns={columns2} />;
+				return <Table dataSource={UserData} scroll={{ x: 1000, y: scrollY }} columns={userColumns} />;
 			case '3':
-				return <Table dataSource={data} scroll={{ x: 1000, y: scrollY }} columns={column3} />;
+				return <Table dataSource={paymentData} scroll={{ x: 1000, y: scrollY }} columns={paymentsColumns} />;
+			case '4':
+				return <Table dataSource={subscriptionData} scroll={{ x: 1000, y: scrollY }} columns={subscriptionColumns} />;
 			default:
 				return null;
 		}
 	};
 
 	return (
-		<ProfileLayout header={<Header />} selectedMenuKey={selectedMenuKey} setSelectedMenuKey={setSelectedMenuKey}>
-			{getMenuContent()}
-		</ProfileLayout>
+		<ConfigProvider
+			theme={{
+				algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+				components: {
+					Divider: {
+						colorBgContainer: '#001529',
+					},
+				},
+			}}
+		>
+			<ProfileLayout
+				header={<Header setIsDarkMode={setIsDarkMode} isDarkMode={isDarkMode} />}
+				selectedMenuKey={selectedMenuKey}
+				setSelectedMenuKey={setSelectedMenuKey}
+			>
+				{getMenuContent()}
+			</ProfileLayout>
+		</ConfigProvider>
 	);
 };

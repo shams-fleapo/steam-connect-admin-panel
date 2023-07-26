@@ -1,12 +1,11 @@
 import clsx from 'clsx';
 import { MouseEventHandler, ReactNode, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { DownOutlined, UserOutlined } from '@ant-design/icons';
-import { Dropdown, Space, Button, Avatar, MenuProps } from 'antd';
+import { DownOutlined, UserOutlined, ExportOutlined, LogoutOutlined } from '@ant-design/icons';
+import { Dropdown, Space, Button, Avatar, MenuProps, Switch } from 'antd';
 
 export interface HeaderProps {
 	className?: string;
-	containerClassName?: string;
 	logo?: ReactNode;
 	loginButton?: ReactNode;
 	logoLink?: string;
@@ -15,31 +14,42 @@ export interface HeaderProps {
 	toggleMenu?: MouseEventHandler;
 	toggleHeaderLogo?: MouseEventHandler;
 	headerText?: string;
+	setIsDarkMode?: Function;
+	isDarkMode?: boolean;
 }
 
-const items: MenuProps['items'] = [
-	{
-		label: <a href='https://www.antgroup.com'>1st menu item</a>,
-		key: '0',
-	},
-	{
-		type: 'divider',
-	},
-	{
-		label: <a href='https://www.aliyun.com'>2nd menu item</a>,
-		key: '1',
-	},
-	{
-		type: 'divider',
-	},
-	{
-		label: '3rd menu item',
-		key: '3',
-	},
-];
-
-export const Header = ({ containerClassName, toggleMenu, headerText }: HeaderProps) => {
+export const Header = ({ isDarkMode, setIsDarkMode }: HeaderProps) => {
 	const isMobile = useMediaQuery({ minWidth: 767 });
+	const changeTheme = () => {
+		setIsDarkMode((prevValue) => !prevValue);
+	};
+
+	const items: MenuProps['items'] = [
+		{
+			label: 'Dark Mode',
+			key: '0',
+			style: { padding: '10px 10px' },
+			icon: <ExportOutlined />,
+			itemIcon: (
+				<Switch
+					checkedChildren='Dark'
+					unCheckedChildren='Light'
+					className='custom-switch'
+					onChange={changeTheme}
+					style={{ background: 'grey' }}
+				/>
+			),
+		},
+		{
+			type: 'divider',
+		},
+		{
+			label: 'Sign Out',
+			key: '1',
+			style: { padding: '10px 10px' },
+			icon: <LogoutOutlined />,
+		},
+	];
 
 	return (
 		<div className='flex flex-row justify-end mt-4'>
@@ -51,7 +61,12 @@ export const Header = ({ containerClassName, toggleMenu, headerText }: HeaderPro
 					{isMobile && (
 						<div className='flex flex-col '>
 							<div className='text-blue-ribbon-500'>Administrator</div>
-							<Space className='text-black'>
+							<Space
+								className={clsx({
+									'text-black': !isDarkMode,
+									'text-white': isDarkMode,
+								})}
+							>
 								Shams@fleapo.com
 								<DownOutlined />
 							</Space>

@@ -34,7 +34,6 @@ const ProfileLayout = ({
 					trigger={null}
 					collapsible
 					collapsed={collapsed}
-					breakpoint={'xs'}
 					style={{
 						overflow: 'auto',
 						height: '100vh',
@@ -61,8 +60,8 @@ const ProfileLayout = ({
 					/>
 					<div
 						style={{
-							borderBlock: '0.1px solid grey',
-							margin: '1px 0 10px',
+							borderBlock: '1px solid white',
+							margin: '4px 0 10px',
 						}}
 					/>
 					<Menu
@@ -73,15 +72,20 @@ const ProfileLayout = ({
 							{
 								key: '1',
 								icon: <UserOutlined />,
-								label: 'Users',
+								label: 'Monthly Users',
 							},
 							{
 								key: '2',
+								icon: <UserOutlined />,
+								label: 'Annual Users',
+							},
+							{
+								key: '3',
 								icon: <VideoCameraOutlined />,
 								label: 'Payments',
 							},
 							{
-								key: '3',
+								key: '4',
 								icon: <UploadOutlined />,
 								label: 'Subscriptions',
 							},
@@ -95,7 +99,6 @@ const ProfileLayout = ({
 					trigger={null}
 					collapsible
 					collapsed={collapsed}
-					breakpoint={'lg'}
 					style={{
 						overflow: 'auto',
 						height: '100vh',
@@ -104,6 +107,7 @@ const ProfileLayout = ({
 						top: 0,
 						bottom: 0,
 					}}
+					theme='dark'
 				>
 					<div className='demo-logo-vertical' />
 					<Button
@@ -111,7 +115,7 @@ const ProfileLayout = ({
 						icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
 						onClick={() => setCollapsed(!collapsed)}
 						style={{
-							fontSize: '16px',
+							fontSize: '40px',
 							width: 64,
 							height: 64,
 							color: 'white',
@@ -120,8 +124,8 @@ const ProfileLayout = ({
 					/>
 					<div
 						style={{
-							borderBlock: '0.1px solid grey',
-							margin: '1px 0 10px',
+							borderBlock: '1px solid white',
+							margin: '4px 0 10px',
 						}}
 					/>
 					<Menu
@@ -132,15 +136,20 @@ const ProfileLayout = ({
 							{
 								key: '1',
 								icon: <UserOutlined />,
-								label: 'Users',
+								label: 'Monthly Users',
 							},
 							{
 								key: '2',
+								icon: <UserOutlined />,
+								label: 'Annual Users',
+							},
+							{
+								key: '3',
 								icon: <VideoCameraOutlined />,
 								label: 'Payments',
 							},
 							{
-								key: '3',
+								key: '4',
 								icon: <UploadOutlined />,
 								label: 'Subscriptions',
 							},
@@ -155,7 +164,7 @@ const ProfileLayout = ({
 						background: colorBgContainer,
 						height: '80px',
 					}}
-					className='border-b-4 '
+					className='border-b-2 '
 				>
 					{header}
 				</div>
