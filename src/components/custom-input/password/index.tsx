@@ -41,7 +41,7 @@ export const Password = (props: CustomInput) => {
 			name='password'
 			type={showPwd ? 'password' : 'text'}
 			icon={
-				props.showicon ? (
+				props.showIcon ? (
 					<PasswordIcon
 						// placeholder='your.email@example.com'
 						width={16}
