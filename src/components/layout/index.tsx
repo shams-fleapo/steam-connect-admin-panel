@@ -1,5 +1,5 @@
-import React, { ReactNode, useEffect, useState } from 'react';
-import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, VideoCameraOutlined } from '@ant-design/icons';
+import { ReactNode, useState } from 'react';
+import { MenuFoldOutlined, MenuUnfoldOutlined, UploadOutlined, UserOutlined, UserSwitchOutlined, TransactionOutlined } from '@ant-design/icons';
 import { Layout, Menu, Button, theme } from 'antd';
 import { useMediaQuery } from 'react-responsive';
 import clsx from 'clsx';
@@ -76,12 +76,12 @@ const ProfileLayout = ({
 							},
 							{
 								key: '2',
-								icon: <UserOutlined />,
+								icon: <UserSwitchOutlined />,
 								label: 'Annual Users',
 							},
 							{
 								key: '3',
-								icon: <VideoCameraOutlined />,
+								icon: <TransactionOutlined />,
 								label: 'Payments',
 							},
 							{
@@ -140,12 +140,12 @@ const ProfileLayout = ({
 							},
 							{
 								key: '2',
-								icon: <UserOutlined />,
+								icon: <UserSwitchOutlined />,
 								label: 'Annual Users',
 							},
 							{
 								key: '3',
-								icon: <VideoCameraOutlined />,
+								icon: <TransactionOutlined />,
 								label: 'Payments',
 							},
 							{

@@ -2,7 +2,19 @@ import { useState } from 'react';
 import ProfileLayout from '../layout';
 import { Header } from '../layout/header';
 import { Table, Dropdown, MenuProps, ConfigProvider, theme } from 'antd';
-import { EllipsisOutlined, EyeOutlined, SubnodeOutlined } from '@ant-design/icons';
+import {
+	EllipsisOutlined,
+	EyeOutlined,
+	SubnodeOutlined,
+	EditOutlined,
+	InteractionOutlined,
+	LockOutlined,
+	DeliveredProcedureOutlined,
+	AuditOutlined,
+	PlusSquareOutlined,
+	StarOutlined,
+	ScanOutlined,
+} from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
 import { UserData, UserDataType, paymentData, subscriptionData, userStatusType } from './data';
 
@@ -17,25 +29,25 @@ const items: MenuProps['items'] = [
 		label: 'Edit user',
 		key: '1',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <EditOutlined />,
 	},
 	{
 		label: 'Recover Trash',
 		key: '2',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <InteractionOutlined />,
 	},
 	{
 		label: 'Suspend Account',
 		key: '3',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <LockOutlined />,
 	},
 	{
 		label: 'Migrate Account',
 		key: '4',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <DeliveredProcedureOutlined />,
 	},
 	{
 		label: 'Reactivate User',
@@ -47,25 +59,25 @@ const items: MenuProps['items'] = [
 		label: 'Manage Supscription',
 		key: '6',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <AuditOutlined />,
 	},
 	{
 		label: 'Add Storage',
 		key: '7',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <PlusSquareOutlined />,
 	},
 	{
 		label: 'Add free months',
 		key: '8',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <StarOutlined />,
 	},
 	{
 		label: 'Show Payment History',
 		key: '9',
 		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
+		icon: <ScanOutlined />,
 	},
 ];
 
