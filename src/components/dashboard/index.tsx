@@ -238,7 +238,7 @@ const subscriptionColumns = [
 	},
 ];
 
-export const Dashboard = () => {
+const Dashboard = () => {
 	const { defaultAlgorithm, darkAlgorithm } = theme;
 	const [selectedMenuKey, setSelectedMenuKey] = useState('1');
 	const [isDarkMode, setIsDarkMode] = useState(false);
@@ -280,3 +280,5 @@ export const Dashboard = () => {
 		</ConfigProvider>
 	);
 };
+
+export default Dashboard;
