@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ProfileLayout from '../layout';
 import { Header } from '../layout/header';
-import { Space, Table, Tag, Dropdown, MenuProps, Popover, ConfigProvider, theme } from 'antd';
-import { EllipsisOutlined, EyeOutlined, PoweroffOutlined, SubnodeOutlined, SelectOutlined } from '@ant-design/icons';
+import { Table, Dropdown, MenuProps, ConfigProvider, theme } from 'antd';
+import { EllipsisOutlined, EyeOutlined, SubnodeOutlined } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
-import { UserData, paymentData, subscriptionData } from './data';
-const { Column, ColumnGroup } = Table;
-
-const title = <span>Title</span>;
+import { UserData, UserDataType, paymentData, subscriptionData, userStatusType } from './data';
 
 const items: MenuProps['items'] = [
 	{
@@ -17,107 +14,56 @@ const items: MenuProps['items'] = [
 		icon: <EyeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Change tariff package',
+		label: 'Edit user',
 		key: '1',
 		style: { padding: '10px 10px' },
-		icon: <SelectOutlined />,
+		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Remove admin success',
+		label: 'Recover Trash',
 		key: '2',
 		style: { padding: '10px 10px' },
-		icon: <PoweroffOutlined />,
+		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Unblock login user',
+		label: 'Suspend Account',
 		key: '3',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'View user',
+		label: 'Migrate Account',
 		key: '4',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Edit user',
+		label: 'Reactivate User',
 		key: '5',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Recover Trash',
+		label: 'Manage Supscription',
 		key: '6',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Suspend Account',
+		label: 'Add Storage',
 		key: '7',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Migrate Account',
+		label: 'Add free months',
 		key: '8',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
 	{
-		type: 'divider',
-	},
-	{
-		label: 'Reactivate User',
-		key: '9',
-		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
-	},
-	{
-		label: 'Manage Supscription',
-		key: '10',
-		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
-	},
-	{
-		label: 'Add Storage',
-		key: '11',
-		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
-	},
-	{
-		label: 'Add free months',
-		key: '12',
-		style: { padding: '10px 10px' },
-		icon: <SubnodeOutlined />,
-	},
-	{
 		label: 'Show Payment History',
-		key: '13',
+		key: '9',
 		style: { padding: '10px 10px' },
 		icon: <SubnodeOutlined />,
 	},
@@ -141,8 +87,8 @@ const userColumns = [
 		width: 150,
 	},
 	{
-		title: 'Block login',
-		dataIndex: 'block_login',
+		title: 'Status',
+		dataIndex: 'user_status',
 		width: 150,
 	},
 	{
@@ -156,16 +102,38 @@ const userColumns = [
 		width: 150,
 	},
 	{
+		title: 'Referred By',
+		dataIndex: 'referred_by',
+		width: 150,
+	},
+	{
 		title: 'Action',
 		dataIndex: 'action',
 		width: 100,
-		render: () => (
-			<Dropdown menu={{ items }} trigger={['click']} className='cursor-pointer' placement='bottomLeft'>
-				<div className='center-icon'>
-					<EllipsisOutlined style={{ fontSize: '30px' }} />
-				</div>
-			</Dropdown>
-		),
+		render: (text, record: UserDataType) =>
+			record.user_status === userStatusType.frozen || record.user_status === userStatusType.suspended ? (
+				<Dropdown
+					menu={{ items: items.filter((item) => item.key !== '3') }}
+					trigger={['click']}
+					className='cursor-pointer'
+					placement='bottomLeft'
+				>
+					<div className='center-icon'>
+						<EllipsisOutlined style={{ fontSize: '30px' }} />
+					</div>
+				</Dropdown>
+			) : (
+				<Dropdown
+					menu={{ items: items.filter((item) => item.key !== '5') }}
+					trigger={['click']}
+					className='cursor-pointer'
+					placement='bottomLeft'
+				>
+					<div className='center-icon'>
+						<EllipsisOutlined style={{ fontSize: '30px' }} />
+					</div>
+				</Dropdown>
+			),
 	},
 ];
 

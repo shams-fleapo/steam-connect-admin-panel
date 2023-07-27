@@ -14,13 +14,20 @@ export enum statusType {
 	active = 'Active',
 	in_active = 'In Active',
 }
+
+export enum userStatusType {
+	active = 'Active',
+	frozen = 'Frozen',
+	suspended = 'Suspended',
+}
 export interface DataType {
 	key: React.Key;
 	user: string;
 	email: string;
 	tarif: string;
 	administrator: string;
-	block_login: string;
+	user_status: userStatusType;
+	referred_by: string;
 	date_created: string;
 	next_date_update_payment: string;
 	paymentId: string;
@@ -36,9 +43,9 @@ export interface DataType {
 	subsciberCount?: number;
 }
 
-type UserDataType = Pick<
+export type UserDataType = Pick<
 	DataType,
-	'key' | 'user' | 'tarif' | 'administrator' | 'block_login' | 'date_created' | 'next_date_update_payment' | 'email'
+	'key' | 'user' | 'tarif' | 'administrator' | 'user_status' | 'date_created' | 'next_date_update_payment' | 'email' | 'referred_by'
 >;
 
 export const UserData: UserDataType[] = [
@@ -47,120 +54,132 @@ export const UserData: UserDataType[] = [
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.active,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 2,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.frozen,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 3,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.active,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 4,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.active,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 5,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.suspended,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 6,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.suspended,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 7,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.suspended,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 8,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.frozen,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 9,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.frozen,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 10,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.frozen,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 11,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.frozen,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 	{
 		key: 12,
 		user: 'Audry Kibonge',
 		tarif: 'free',
 		administrator: 'User',
-		block_login: 'blocked',
+		user_status: userStatusType.frozen,
 		date_created: '2023-07-23 03:53:22',
 		next_date_update_payment: '2024-07-23 00:00:00',
 		email: 'aundry@stymnnect.com',
+		referred_by: 'Steve Thornton',
 	},
 ];
 type PaymentDataType = Pick<DataType, 'key' | 'paymentId' | 'paymentDate' | 'email' | 'amount' | 'paymentStatus'>;
