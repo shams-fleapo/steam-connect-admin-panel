@@ -2,19 +2,127 @@ import React, { useState } from 'react';
 import ProfileLayout from '../layout';
 import { Header } from '../layout/header';
 import { Space, Table, Tag, Dropdown, MenuProps, Popover, ConfigProvider, theme } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
+import { EllipsisOutlined, EyeOutlined, PoweroffOutlined, SubnodeOutlined, SelectOutlined } from '@ant-design/icons';
 import { useMediaQuery } from 'react-responsive';
 import { UserData, paymentData, subscriptionData } from './data';
 const { Column, ColumnGroup } = Table;
 
 const title = <span>Title</span>;
 
-const content = (
-	<div>
-		<p>Content</p>
-		<p>Content</p>
-	</div>
-);
+const items: MenuProps['items'] = [
+	{
+		label: 'View Details',
+		key: '0',
+		style: { padding: '10px 10px' },
+		icon: <EyeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Change tariff package',
+		key: '1',
+		style: { padding: '10px 10px' },
+		icon: <SelectOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Remove admin success',
+		key: '2',
+		style: { padding: '10px 10px' },
+		icon: <PoweroffOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Unblock login user',
+		key: '3',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'View user',
+		key: '4',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Edit user',
+		key: '5',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Recover Trash',
+		key: '6',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Suspend Account',
+		key: '7',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Migrate Account',
+		key: '8',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		type: 'divider',
+	},
+	{
+		label: 'Reactivate User',
+		key: '9',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		label: 'Manage Supscription',
+		key: '10',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		label: 'Add Storage',
+		key: '11',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		label: 'Add free months',
+		key: '12',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+	{
+		label: 'Show Payment History',
+		key: '13',
+		style: { padding: '10px 10px' },
+		icon: <SubnodeOutlined />,
+	},
+];
+
 const userColumns = [
 	{
 		title: 'User',
@@ -50,13 +158,13 @@ const userColumns = [
 	{
 		title: 'Action',
 		dataIndex: 'action',
-		width: 150,
-		render: (_, record) => (
-			<Popover placement='bottom' title={title} content={content} trigger='click' overlayClassName='custom-popover'>
+		width: 100,
+		render: () => (
+			<Dropdown menu={{ items }} trigger={['click']} className='cursor-pointer' placement='bottomLeft'>
 				<div className='center-icon'>
 					<EllipsisOutlined style={{ fontSize: '30px' }} />
 				</div>
-			</Popover>
+			</Dropdown>
 		),
 	},
 ];

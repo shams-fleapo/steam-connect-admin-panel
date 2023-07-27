@@ -1,3 +1,8 @@
+export const auth = {
+	email: 'test@gmail.com',
+	password: 'Test@123',
+};
+
 export enum nameType {
 	Student = 'Student',
 	Pro = 'Pro',
@@ -158,7 +163,7 @@ export const UserData: UserDataType[] = [
 		email: 'aundry@stymnnect.com',
 	},
 ];
-type PaymentDataType = Pick<DataType, 'key' | 'paymentId' | 'paymentDate' | 'amount' | 'paymentStatus'>;
+type PaymentDataType = Pick<DataType, 'key' | 'paymentId' | 'paymentDate' | 'email' | 'amount' | 'paymentStatus'>;
 
 export const paymentData: PaymentDataType[] = [
 	{
@@ -167,6 +172,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 2,
@@ -174,6 +180,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 3,
@@ -182,6 +189,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 4,
@@ -190,6 +198,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 5,
@@ -197,6 +206,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 6,
@@ -204,6 +214,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 7,
@@ -211,6 +222,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 8,
@@ -218,6 +230,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 9,
@@ -225,6 +238,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 10,
@@ -232,6 +246,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 11,
@@ -239,6 +254,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 	{
 		key: 12,
@@ -246,6 +262,7 @@ export const paymentData: PaymentDataType[] = [
 		paymentDate: '2023-07-23 03:53:22',
 		amount: 63737,
 		paymentStatus: 'done',
+		email: 'aundry@stymnnect.com',
 	},
 ];
 
