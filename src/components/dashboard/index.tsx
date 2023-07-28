@@ -18,12 +18,18 @@ import {
 import { useMediaQuery } from 'react-responsive';
 import { UserData, UserDataType, paymentData, subscriptionData, userStatusType } from './data';
 import { useNavigate } from 'react-router-dom';
+import Modals from '../modals';
 
 const Dashboard = () => {
 	const navigate = useNavigate();
 	const { defaultAlgorithm, darkAlgorithm } = theme;
 	const [selectedMenuKey, setSelectedMenuKey] = useState('1');
 	const [isDarkMode, setIsDarkMode] = useState(false);
+	const [modalData, setModalData] = useState({
+		openModal: false,
+		modalTitle: '',
+		modalType: null,
+	});
 	const isDesktop = useMediaQuery({ minWidth: 1024 });
 	const scrollY = !isDesktop ? 500 : 500;
 
@@ -32,6 +38,27 @@ const Dashboard = () => {
 			switch (key) {
 				case '0':
 					navigate('/user');
+					break;
+				case '6':
+					setModalData({
+						openModal: true,
+						modalTitle: 'Manage Subscription',
+						modalType: 'manage-subscription',
+					});
+					break;
+				case '7':
+					setModalData({
+						openModal: true,
+						modalTitle: 'Add Storage',
+						modalType: 'add-storage',
+					});
+					break;
+				case '8':
+					setModalData({
+						openModal: true,
+						modalTitle: 'Add Free Month',
+						modalType: 'add-free-months',
+					});
 					break;
 				default:
 					break;
@@ -83,18 +110,21 @@ const Dashboard = () => {
 			key: '6',
 			style: { padding: '10px 10px' },
 			icon: <AuditOutlined />,
+			onClick: () => handleMenuItemClick('6'),
 		},
 		{
 			label: 'Add Storage',
 			key: '7',
 			style: { padding: '10px 10px' },
 			icon: <PlusSquareOutlined />,
+			onClick: () => handleMenuItemClick('7'),
 		},
 		{
 			label: 'Add free months',
 			key: '8',
 			style: { padding: '10px 10px' },
 			icon: <StarOutlined />,
+			onClick: () => handleMenuItemClick('8'),
 		},
 		{
 			label: 'Show Payment History',
@@ -273,6 +303,14 @@ const Dashboard = () => {
 				setSelectedMenuKey={setSelectedMenuKey}
 			>
 				{getMenuContent()}
+				{modalData.openModal && (
+					<Modals
+						open={modalData.openModal}
+						onClose={() => setModalData((prevData) => ({ ...prevData, openModal: false }))}
+						title={modalData.modalTitle}
+						type={modalData.modalType}
+					/>
+				)}
 			</ProfileLayout>
 		</ConfigProvider>
 	);
