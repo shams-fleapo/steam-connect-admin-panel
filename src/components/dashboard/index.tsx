@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import ProfileLayout from '../layout';
 import { Header } from '../layout/header';
-import { Table, Dropdown, MenuProps, ConfigProvider, theme } from 'antd';
+import { Table, Dropdown, MenuProps, ConfigProvider, theme, Input, Typography } from 'antd';
 import {
 	EllipsisOutlined,
 	EyeOutlined,
@@ -30,8 +30,31 @@ const Dashboard = () => {
 		modalTitle: '',
 		modalType: null,
 	});
+	const [filteredUserData, setFilteredUserData] = useState(UserData);
+	const [filteredPaymentData, setFilteredPaymentData] = useState(paymentData);
+	const [filteredSubscriptionData, setFilteredSubscriptionData] = useState(subscriptionData);
+
 	const isDesktop = useMediaQuery({ minWidth: 1024 });
 	const scrollY = !isDesktop ? 500 : 500;
+
+	const handleUserSearch = (value) => {
+		const filteredData = UserData.filter((item) =>
+			Object.values(item).some((val) => val && val.toString().toLowerCase().includes(value.toLowerCase())),
+		);
+		setFilteredUserData(filteredData);
+	};
+	const handlePaymentSearch = (value) => {
+		const filteredData = paymentData.filter((item) =>
+			Object.values(item).some((val) => val && val.toString().toLowerCase().includes(value.toLowerCase())),
+		);
+		setFilteredPaymentData(filteredData);
+	};
+	const handleSubscriptionSearch = (value) => {
+		const filteredData = subscriptionData.filter((item) =>
+			Object.values(item).some((val) => val && val.toString().toLowerCase().includes(value.toLowerCase())),
+		);
+		setFilteredSubscriptionData(filteredData);
+	};
 
 	const handleMenuItemClick = useCallback(
 		(key) => {
@@ -274,13 +297,78 @@ const Dashboard = () => {
 	const getMenuContent = () => {
 		switch (selectedMenuKey) {
 			case '1':
-				return <Table dataSource={UserData} scroll={{ x: 1000, y: scrollY }} columns={userColumns} />;
+				return (
+					<>
+						<div className='flex flex-row justify-between'>
+							{isDesktop && <Typography.Title level={3}>Monthly User</Typography.Title>}
+							<Input.Search
+								style={{ width: 300, marginBottom: 16 }}
+								placeholder='Search by User, Administrator, Status, Date Created, Next date update payment, Referred By'
+								enterButton
+								onSearch={(value) => handleUserSearch(value)}
+							/>
+						</div>
+
+						<div>
+							<Table dataSource={filteredUserData} scroll={{ x: 1000, y: scrollY }} columns={userColumns} />
+						</div>
+					</>
+				);
+
 			case '2':
-				return <Table dataSource={UserData} scroll={{ x: 1000, y: scrollY }} columns={userColumns} />;
+				return (
+					<>
+						<div className='flex flex-row justify-between'>
+							{isDesktop && <Typography.Title level={3}>Annual User</Typography.Title>}
+							<Input.Search
+								style={{ width: 300, marginBottom: 16 }}
+								placeholder='Search by User, Administrator, Status, Date Created, Next date update payment, Referred By'
+								enterButton
+								onSearch={(value) => handleUserSearch(value)}
+							/>
+						</div>
+
+						<div>
+							<Table dataSource={filteredUserData} scroll={{ x: 1000, y: scrollY }} columns={userColumns} />
+						</div>
+					</>
+				);
 			case '3':
-				return <Table dataSource={paymentData} scroll={{ x: 1000, y: scrollY }} columns={paymentsColumns} />;
+				return (
+					<>
+						<div className='flex flex-row justify-between'>
+							{isDesktop && <Typography.Title level={3}>Payments</Typography.Title>}
+							<Input.Search
+								style={{ width: 300, marginBottom: 16 }}
+								placeholder='Search by User, Administrator, Status, Date Created, Next date update payment, Referred By'
+								enterButton
+								onSearch={(value) => handlePaymentSearch(value)}
+							/>
+						</div>
+
+						<div>
+							<Table dataSource={filteredPaymentData} scroll={{ x: 1000, y: scrollY }} columns={paymentsColumns} />
+						</div>
+					</>
+				);
 			case '4':
-				return <Table dataSource={subscriptionData} scroll={{ x: 1000, y: scrollY }} columns={subscriptionColumns} />;
+				return (
+					<>
+						<div className='flex flex-row justify-between'>
+							{isDesktop && <Typography.Title level={3}>Subscription</Typography.Title>}
+							<Input.Search
+								style={{ width: 300, marginBottom: 16 }}
+								placeholder='Search by User, Administrator, Status, Date Created, Next date update payment, Referred By'
+								enterButton
+								onSearch={(value) => handleSubscriptionSearch(value)}
+							/>
+						</div>
+
+						<div>
+							<Table dataSource={filteredSubscriptionData} scroll={{ x: 1000, y: scrollY }} columns={subscriptionColumns} />
+						</div>
+					</>
+				);
 			default:
 				return null;
 		}

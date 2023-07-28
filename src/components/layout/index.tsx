@@ -170,7 +170,7 @@ const ProfileLayout = ({
 				</div>
 				<Content
 					style={{
-						margin: '24px 8px',
+						margin: '4px 8px',
 						padding: 14,
 						minHeight: 280,
 						// background: colorBgContainer,
