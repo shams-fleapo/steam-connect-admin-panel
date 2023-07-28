@@ -5,7 +5,7 @@ import UserDetails from '../screens/user-details';
 
 const pagesData: routerType[] = [
 	{
-		path: '/login',
+		path: '/',
 		element: <Login />,
 		title: 'login',
 	},
