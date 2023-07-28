@@ -29,7 +29,7 @@ export default function Login() {
 		<>
 			{contextHolder}
 			<div className='flex justify-center items-center pt-[100px]'>
-				<div className='h-full bg-white p-5 lg:p-[50px] lg:w-[624px] md:w-[624px] xs:w-[624px] xs:min-h-[500px] sm:mt-[40px] md:mt-[40px] xs:mt-[40px]  border-1 border-[#6576ff] rounded'>
+				<div className='h-full bg-white p-5 lg:p-[50px] lg:w-[624px] md:w-[624px] xs:w-[624px] xs:min-h-[500px] sm:mt-[40px] md:mt-[40px] xs:mt-[40px]  rounded'>
 					<div className='flex flex-col w-full lg:justify-center xs:px-0 gap-4'>
 						<div className='mb-2.5 text-left text-[30px]'>Sign-In</div>
 						<Form
@@ -39,7 +39,20 @@ export default function Login() {
 							layout='vertical'
 							autoComplete='true'
 						>
-							<Form.Item label='Email Address' name='email' rules={[{ required: true, message: 'Please input your email!' }]}>
+							<Form.Item
+								label='Email Address'
+								name='email'
+								rules={[
+									{
+										type: 'email',
+										message: 'The input is not valid E-mail!',
+									},
+									{
+										required: true,
+										message: 'Please input your E-mail!',
+									},
+								]}
+							>
 								<Input
 									placeholder='your.email@example.com'
 									style={{ height: '45px' }}

@@ -14,8 +14,8 @@ const ProfileLayout = ({
 }: {
 	children?: ReactNode;
 	header?: JSX.Element;
-	selectedMenuKey: string;
-	setSelectedMenuKey: Function;
+	selectedMenuKey?: string;
+	setSelectedMenuKey?: Function;
 }) => {
 	const isDesktop = useMediaQuery({ minWidth: 1024 });
 	const [collapsed, setCollapsed] = useState(false);
@@ -173,7 +173,7 @@ const ProfileLayout = ({
 						margin: '24px 8px',
 						padding: 14,
 						minHeight: 280,
-						background: colorBgContainer,
+						// background: colorBgContainer,
 						marginLeft: !isDesktop && '80px',
 					}}
 				>
